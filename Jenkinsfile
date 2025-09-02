@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/seshuadi969/habitica.git'
+                git branch: 'develop', url: 'https://github.com/seshuadi969/habitica.git'
             }
         }
 
