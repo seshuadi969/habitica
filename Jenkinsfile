@@ -1,29 +1,22 @@
 pipeline {
     agent any
-
     stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'develop', url: 'https://github.com/seshuadi969/habitica.git'
-            }
-        }
-
         stage('Build') {
             steps {
                 sh 'mvn clean package'
             }
         }
-
-        stage('Run App') {
+        stage('Docker Build') {
             steps {
-<<<<<<< HEAD
-                sh 'java -cp target/habitica-demo-1.0-SNAPSHOT-jar-with-dependencies.jar HelloWorld'
-=======
-                sh 'java -cp target/habitica-demo-1.0-SNAPSHOT-jar-with-dependencies.jar com.habitica.HelloWorld'
->>>>>>> b15f700cfef4bb8cbce3f95acdc045a5b8052d9a
-
+                sh 'docker build -t habitica-app .'
+            }
+        }
+        stage('Run Container') {
+            steps {
+                sh 'docker run -d -p 8080:8080 habitica-app'
             }
         }
     }
 }
+
 
