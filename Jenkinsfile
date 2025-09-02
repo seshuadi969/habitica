@@ -16,7 +16,8 @@ pipeline {
 
         stage('Run App') {
             steps {
-                sh 'java -cp target/habitica-demo-1.0-SNAPSHOT-jar-with-dependencies.jar HelloWorld'
+                sh 'java -cp target/habitica-demo-1.0-SNAPSHOT-jar-with-dependencies.jar com.habitica.HelloWorld'
+
             }
         }
     }
